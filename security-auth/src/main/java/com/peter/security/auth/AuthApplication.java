@@ -7,9 +7,9 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableDiscoveryClient
-@EnableHystrix
-@EnableFeignClients(basePackages = {"com.peter.security.auth"})
+//@EnableDiscoveryClient
+//@EnableHystrix
+//@EnableFeignClients(basePackages = {"com.peter.security.auth"})
 public class AuthApplication {
 
     public static void main(String[] args) {
