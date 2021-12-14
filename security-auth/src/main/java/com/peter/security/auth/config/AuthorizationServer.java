@@ -1,5 +1,6 @@
 package com.peter.security.auth.config;
 
+import com.peter.security.auth.service.SpringDataUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +27,9 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     private TokenStore tokenStore;
     @Autowired
     private ClientDetailsService clientDetailsService;
+
+    @Autowired
+    private SpringDataUserDetailsService springDataUserDetailsService;
 
     @Bean
     public AuthorizationServerTokenServices tokenService() {
@@ -82,6 +86,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
+                .userDetailsService(springDataUserDetailsService)
                 .authenticationManager(authenticationManager)
                 .authorizationCodeServices(authorizationCodeServices)
                 .tokenServices(tokenService())
